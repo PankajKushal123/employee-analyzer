@@ -84,10 +84,12 @@ The project uses **JUnit** for unit testing. To run the tests, use the following
 mvn test
 ```
 
-**Below is the class diagram for the project:**
+## Diagrams
+
+**Below is the class diagram of the project:**
 
 ![Class Diagram](./docs/class-diagram.png)
 
-**Below is the sequence diagram for the project:**
+**Below is the sequence diagram of the project:**
 
 ![Sequence Diagram](./docs/sequence-diagram.png)
