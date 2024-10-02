@@ -6,8 +6,10 @@ import org.example.exception.FileParseException;
 import org.example.model.Employee;
 import org.example.model.EmployeeReportLinesResult;
 import org.example.model.ManagerSalaryAnalysisResult;
+import org.example.parser.DataParser;
 import org.example.parser.EmployeeCSVParser;
 import org.example.renderer.ConsoleOutputRenderer;
+import org.example.renderer.OutputRenderer;
 import org.example.service.EmployeeService;
 import org.example.service.EmployeeServiceImpl;
 
@@ -24,7 +26,7 @@ public class EmployeeAnalyzerApp {
     }
 
     public static void main(String[] args) {
-        EmployeeCSVParser parser = new EmployeeCSVParser();
+        DataParser<Employee> parser = new EmployeeCSVParser();
         EmployeeService service = new EmployeeServiceImpl();
 
         if(args.length <1) {
@@ -45,7 +47,7 @@ public class EmployeeAnalyzerApp {
             List<EmployeeReportLinesResult> reportLinesResult = service.analyzeReportingLines(employees);
 
             // Display Result
-            ConsoleOutputRenderer render = new ConsoleOutputRenderer();
+            OutputRenderer render = new ConsoleOutputRenderer();
             render.renderManagerSalary(managerSalaryAnalysisResults);
             render.renderReportLines(reportLinesResult);
 
