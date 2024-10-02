@@ -15,7 +15,7 @@ This project analyzes employee data from a CSV file, including:
 - **Java SE**
 - **Lombok** (for simplifying code and logging)
 - **JUnit** (for testing)
-- **Log4j 2** (for logging)
+- **Log4j** (for logging)
 
 ## How to Run
 
