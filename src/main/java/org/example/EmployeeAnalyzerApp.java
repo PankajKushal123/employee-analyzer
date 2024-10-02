@@ -6,15 +6,22 @@ import org.example.exception.FileParseException;
 import org.example.model.Employee;
 import org.example.model.EmployeeReportLinesResult;
 import org.example.model.ManagerSalaryAnalysisResult;
-import org.example.renderer.ConsoleOutputRenderer;
 import org.example.parser.EmployeeCSVParser;
+import org.example.renderer.ConsoleOutputRenderer;
 import org.example.service.EmployeeService;
 import org.example.service.EmployeeServiceImpl;
 
 import java.util.List;
 
+import static org.apache.logging.log4j.core.config.Configurator.initialize;
+
 public class EmployeeAnalyzerApp {
     private static final Logger logger = LogManager.getLogger(EmployeeAnalyzerApp.class);
+
+    static {
+        //Load log4j configuration file
+        initialize(null, "src/main/resources/log4j.xml");
+    }
 
     public static void main(String[] args) {
         EmployeeCSVParser parser = new EmployeeCSVParser();
