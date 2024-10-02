@@ -83,3 +83,11 @@ The project uses **JUnit** for unit testing. To run the tests, use the following
 ```bash
 mvn test
 ```
+
+**Below is the class diagram for the project:**
+
+![Class Diagram](./docs/class-diagram.png)
+
+**Below is the sequence diagram for the project:**
+
+![Sequence Diagram](./docs/sequence-diagram.png)
