@@ -13,9 +13,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * This class implements the EmployeeService interface to analyze employee data.
+ * It provides methods to analyze manager salaries and employee reporting lines.
+ */
 public class EmployeeServiceImpl implements EmployeeService {
     private static final Logger logger = LogManager.getLogger(EmployeeServiceImpl.class);
 
+    /**
+     * Analyzes the salaries of managers based on the salaries of their subordinates.
+     *
+     * @param employees a list of Employee objects to analyze.
+     * @return a list of ManagerSalaryAnalysisResult containing the analysis results.
+     */
     public List<ManagerSalaryAnalysisResult> analyzeManagerSalaries(List<Employee> employees) {
         logger.info("analyzeManagerSalaries started");
         Map<Integer, List<Employee>> subordinatesByManager = groupEmployeeByManagerId(employees);
@@ -50,6 +60,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return salaryAnalysisResults;
     }
 
+    /**
+     * Analyzes the reporting lines of employees to check for excessively long reporting hierarchies.
+     *
+     * @param employees a list of Employee objects to analyze.
+     * @return a list of EmployeeReportLinesResult containing the analysis results.
+     */
     public List<EmployeeReportLinesResult> analyzeReportingLines(List<Employee> employees) {
         logger.info("analyzeReportingLines started");
         List<EmployeeReportLinesResult> reportingLineResults = new ArrayList<>();
@@ -66,6 +82,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         return reportingLineResults;
     }
 
+    /**
+     * Calculates the length of the reporting line for a given employee.
+     *
+     * @param emp the Employee object whose reporting line length is to be calculated.
+     * @param employeeMap a map of employee IDs to Employee objects.
+     * @return the number of managers in the reporting line.
+     */
     private int calculateReportingLineLength(Employee emp, Map<Integer, Employee> employeeMap) {
         int count = 0;
         Integer managerId = emp.getManagerId();
@@ -80,6 +103,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return count;
     }
 
+    /**
+     * Groups employees by their manager ID.
+     *
+     * @param employees a list of Employee objects to group.
+     * @return a map where the key is a manager ID and the value is a list of employees under that manager.
+     */
     private Map<Integer, List<Employee>> groupEmployeeByManagerId(List<Employee> employees) {
         Map<Integer, List<Employee>> subordinatesByManager = new HashMap<>();
 

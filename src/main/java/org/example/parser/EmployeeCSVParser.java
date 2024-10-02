@@ -10,9 +10,20 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class implements the DataParser interface to parse employee data from a CSV file.
+ * It converts the CSV data into a list of Employee objects.
+ */
 public class EmployeeCSVParser implements DataParser<Employee> {
     private static final Logger logger = LogManager.getLogger(EmployeeCSVParser.class);
 
+    /**
+     * Parses a CSV file and converts it into a list of Employee objects.
+     *
+     * @param filePath the path to the CSV file to be parsed
+     * @return a List of Employee objects populated from the CSV file
+     * @throws Exception if an error occurs during file reading or parsing
+     */
     @Override
     public List<Employee> parse(String filePath) throws Exception {
         logger.info("CSV Data Parsing started");

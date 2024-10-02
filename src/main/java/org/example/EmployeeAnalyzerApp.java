@@ -17,6 +17,10 @@ import java.util.List;
 
 import static org.apache.logging.log4j.core.config.Configurator.initialize;
 
+/**
+ * The EmployeeAnalyzerApp class serves as the entry point for the Employee Analyzer application.
+ * It manages the loading, processing, and rendering of employee data from a CSV file.
+ */
 public class EmployeeAnalyzerApp {
     private static final Logger logger = LogManager.getLogger(EmployeeAnalyzerApp.class);
 
@@ -25,6 +29,11 @@ public class EmployeeAnalyzerApp {
         initialize(null, "src/main/resources/log4j.xml");
     }
 
+    /**
+     * The main method that executes the application logic.
+     *
+     * @param args command-line arguments; expects the path to the CSV file as the first argument
+     */
     public static void main(String[] args) {
         DataParser<Employee> parser = new EmployeeCSVParser();
         EmployeeService service = new EmployeeServiceImpl();
@@ -47,9 +56,9 @@ public class EmployeeAnalyzerApp {
             List<EmployeeReportLinesResult> reportLinesResult = service.analyzeReportingLines(employees);
 
             // Display Result
-            OutputRenderer render = new ConsoleOutputRenderer();
-            render.renderManagerSalary(managerSalaryAnalysisResults);
-            render.renderReportLines(reportLinesResult);
+            OutputRenderer renderer = new ConsoleOutputRenderer();
+            renderer.renderManagerSalary(managerSalaryAnalysisResults);
+            renderer.renderReportLines(reportLinesResult);
 
         } catch (FileParseException fpe) {
             logger.error(fpe.getMessage());

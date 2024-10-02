@@ -5,8 +5,17 @@ import org.example.model.ManagerSalaryAnalysisResult;
 
 import java.util.List;
 
+/**
+ * This class implements the OutputRenderer interface to render analysis results
+ * related to manager salaries and employee reporting lines to the console.
+ */
 public class ConsoleOutputRenderer implements OutputRenderer {
 
+    /**
+     * Renders the manager salary analysis results to the console.
+     *
+     * @param result a list of ManagerSalaryAnalysisResult containing the salary analysis results
+     */
     @Override
     public void renderManagerSalary(List<ManagerSalaryAnalysisResult> result) {
         System.out.println("*******************Salary Analysis Output**************************");
@@ -23,6 +32,11 @@ public class ConsoleOutputRenderer implements OutputRenderer {
         });
     }
 
+    /**
+     * Renders the employee reporting lines analysis results to the console.
+     *
+     * @param result a list of EmployeeReportLinesResult containing the reporting line analysis results
+     */
     @Override
     public void renderReportLines(List<EmployeeReportLinesResult> result) {
         System.out.println("*******************Report Lines Output**************************");
